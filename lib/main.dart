@@ -2,15 +2,17 @@ import 'package:flutter/material.dart';
 import 'carousel.dart';
 
 Map<String, int> startbiblio = <String, int>{
-  'McDonalds': 1,
+  'McDonalds': 1, 'Gleis 16': 111, 'U5': 211
 };
 Map<String, int> endbiblio = <String, int>{
-  'Exit A': 13,
+  'Exit A': 13, 'McDonalds': 134, 'Gleis 6': 228
 };
 int start = 0;
 int ende = 0;
 List list = [
-  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21],
+  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+  [111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134],
+  [211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228]
 ];
 List mapList = [];
 List imgList = [];
@@ -89,9 +91,20 @@ class MyHome extends StatelessWidget {
               child: FloatingActionButton(
                 onPressed: () {
                   if (myController.text != endController.text) {
+                    print("1");
+                    if (makeRoute(myController.text, endController.text)) {
+                      print("2");
+                      print(mapList);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Carousel()),
+                      );
+                    } else {
+                      showAlertDialog(context);
+                    }
                     myController.clear();
                     endController.clear();
-                    makeRoute(myController, endController);
+                    print(mapList);
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => Carousel()),
@@ -109,11 +122,13 @@ class MyHome extends StatelessWidget {
   }
 }
 
-void makeRoute(var startText, var EndText) {
+bool makeRoute(var startText, var EndText) {
   searchstart(startText);
   searchend(EndText);
   route(start, ende);
   chooseimages();
+  print(imgList);
+  return imgList.length > 0;
 }
 
 void searchstart(var searchparam) {
@@ -160,7 +175,7 @@ void chooseimages() {
   imgList.clear();
   for (var i = 0; i < mapList.length; i++) {
     var j = mapList[i];
-    imgList.add('assets/images/img$j.png');
+    imgList.add('/images/img$j.png');
   }
 }
 

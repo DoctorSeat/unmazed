@@ -78,23 +78,23 @@ class _CarouselState extends State<Carousel> {
             },
             labelStyle: TextStyle(fontSize: 18.0),
           ),
-          SpeedDialChild(
-            child: Icon(Icons.alt_route),
-            backgroundColor: Colors.red,
-            label: 'Alt. Route',
-            onTap: () {
-              start = 21;
-              ende = 17;
-              route(start, ende);
-              print('$start $ende');
-              chooseimages();
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Carousel()),
-              );
-            },
-            labelStyle: TextStyle(fontSize: 18.0),
-          ),
+          // SpeedDialChild(
+          //   child: Icon(Icons.alt_route),
+          //   backgroundColor: Colors.red,
+          //   label: 'Alt. Route',
+          //   onTap: () {
+          //     start = 21;
+          //     ende = 17;
+          //     route(start, ende);
+          //     print('$start $ende');
+          //     chooseimages();
+          //     Navigator.push(
+          //       context,
+          //       MaterialPageRoute(builder: (context) => Carousel()),
+          //     );
+          //   },
+          //   labelStyle: TextStyle(fontSize: 18.0),
+          // ),
         ],
       ),
     );
@@ -249,16 +249,16 @@ class _CarouselState extends State<Carousel> {
                   width: MediaQuery.of(context).size.width,
                 ))),
       ),
-      Align(
-        alignment: Alignment.bottomLeft,
-        child: Image.asset(
-          'assets/images/compass.png',
-          width: 100,
-        ),
-      ),
-      Align(
-          alignment: Alignment.centerLeft,
-          child: Image.asset('assets/images/Anzeigetafel$_tafelIndex.png'))
+      // Align(
+      //   alignment: Alignment.bottomLeft,
+      //   child: Image.asset(
+      //     'assets/images/compass.png',
+      //     width: 100,
+      //   ),
+      // ),
+      // Align(
+      //     alignment: Alignment.centerLeft,
+      //     child: Image.asset('assets/images/Anzeigetafel$_tafelIndex.png'))
     ]));
   }
 }
