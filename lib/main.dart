@@ -56,7 +56,7 @@ class MyHome extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
           title: Image.asset(
-        'assets/images/logo.png',
+        'assetsa/images/logo.png',
         fit: BoxFit.contain,
         height: 50,
       )),
@@ -175,7 +175,7 @@ void chooseimages() {
   imgList.clear();
   for (var i = 0; i < mapList.length; i++) {
     var j = mapList[i];
-    imgList.add('/images/img$j.png');
+    imgList.add('assetsa/images/$j.png');
   }
 }
 
