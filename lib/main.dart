@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:unmazed/scrub.dart';
 import 'carousel.dart';
 
 Map<String, int> startbiblio = <String, int>{
@@ -56,7 +57,7 @@ class MyHome extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
           title: Image.asset(
-        'assetsa/images/logo.png',
+        'assets/images/logo.png',
         fit: BoxFit.contain,
         height: 50,
       )),
@@ -97,7 +98,7 @@ class MyHome extends StatelessWidget {
                       print(mapList);
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Carousel()),
+                        MaterialPageRoute(builder: (context) => Scrub()),
                       );
                     } else {
                       showAlertDialog(context);
@@ -107,7 +108,7 @@ class MyHome extends StatelessWidget {
                     print(mapList);
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Carousel()),
+                      MaterialPageRoute(builder: (context) => Scrub()),
                     );
                   } else {
                     showAlertDialog(context);
@@ -122,9 +123,9 @@ class MyHome extends StatelessWidget {
   }
 }
 
-bool makeRoute(var startText, var EndText) {
+bool makeRoute(var startText, var endText) {
   searchstart(startText);
-  searchend(EndText);
+  searchend(endText);
   route(start, ende);
   chooseimages();
   print(imgList);
@@ -175,7 +176,7 @@ void chooseimages() {
   imgList.clear();
   for (var i = 0; i < mapList.length; i++) {
     var j = mapList[i];
-    imgList.add('assetsa/images/$j.png');
+    imgList.add('assets/images/$j.png');
   }
 }
 

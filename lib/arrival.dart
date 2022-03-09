@@ -2,7 +2,7 @@ import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
-import 'package:pathfinder/main.dart';
+import 'package:unmazed/main.dart';
 
 class Arrival extends StatefulWidget {
   const Arrival({Key key}) : super(key: key);
