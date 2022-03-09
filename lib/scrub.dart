@@ -25,6 +25,7 @@ class _ScrubState extends State<Scrub> {
         setState(() {});
       })
       ..setLooping(true)
+      ..setPlaybackSpeed(0.5)
       ..initialize().then((_) => _controller.pause());
   }
 
@@ -75,7 +76,7 @@ class _ScrubState extends State<Scrub> {
                             onChanged: (value) => setState(() => {
                                   this.value = value,
                                   print(this.value),
-                                  _controller.setPlaybackSpeed(this.value),
+                                  _controller.setPlaybackSpeed(this.value/2),
                                 }),
                           ),
                         ),
