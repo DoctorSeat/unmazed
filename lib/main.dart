@@ -3,18 +3,16 @@ import 'package:unmazed/scrub.dart';
 import 'carousel.dart';
 
 Map<String, int> startbiblio = <String, int>{
-  'McDonalds': 1, 'Gleis 16': 111, 'U5': 211
+  'I': 0,
 };
 Map<String, int> endbiblio = <String, int>{
-  'Exit A': 13, 'McDonalds': 134, 'Gleis 6': 228
+  'A': 1,
+  'B': 2,
+  'C': 3,
 };
 int start = 0;
 int ende = 0;
-List list = [
-  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
-  [111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134],
-  [211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228]
-];
+int index;
 List mapList = [];
 List imgList = [];
 void main() {
@@ -126,7 +124,8 @@ class MyHome extends StatelessWidget {
 bool makeRoute(var startText, var endText) {
   searchstart(startText);
   searchend(endText);
-  route(start, ende);
+  // route(start, ende);
+  index = start + ende;
   chooseimages();
   print(imgList);
   return imgList.length > 0;
@@ -140,9 +139,6 @@ void searchstart(var searchparam) {
       start = v;
     }
   });
-  if (start == 0) {
-    print("startpunkt nicht gefunden");
-  }
 }
 
 void searchend(var searchparam) {
@@ -153,24 +149,20 @@ void searchend(var searchparam) {
       ende = v;
     }
   });
-
-  if (ende == 0) {
-    print("endpunkt nicht gefunden");
-  }
 }
 
-void route(var a, var b) {
-  if (a != 0 && b != 0) {
-    for (var i = 0; i < list.length; i++) {
-      if (a == list[i].first && b == list[i].last) {
-        print(list[i]);
-        mapList = list[i];
-      }
-    }
-  } else {
-    print("kein start/endpunkt");
-  }
-}
+// void route(var a, var b) {
+//   if (a != 0 && b != 0) {
+//     for (var i = 0; i < list.length; i++) {
+//       if (a == list[i].first && b == list[i].last) {
+//         print(list[i]);
+//         mapList = list[i];
+//       }
+//     }
+//   } else {
+//     print("kein start/endpunkt");
+//   }
+// }
 
 void chooseimages() {
   imgList.clear();

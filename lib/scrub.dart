@@ -20,19 +20,17 @@ class _ScrubState extends State<Scrub> {
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.asset('assets/videos/snippet1.mp4')
+    _controller = VideoPlayerController.asset('assets/videos/route$index.mp4')
       ..addListener(() {
         setState(() {});
       })
-      ..setLooping(true)
-      ..setPlaybackSpeed(0.5)
       ..initialize().then((_) => _controller.pause());
   }
 
   @override
   Widget build(BuildContext context) {
     final double min = 0.5;
-    final double max = 2;
+    final double max = 5;
     double value = 1;
     bool token = false;
     return new Scaffold(
@@ -46,10 +44,12 @@ class _ScrubState extends State<Scrub> {
                 token = true;
                 if (this.value > 0) {
                   _controller.play();
-                } else {
+                  if (_controller.value.position ==
+                      _controller.value.duration) {
+                    _controller.pause();
                   }
-              }, 
-              onTapUp: (_) {
+                } else {}
+              }, onTapUp: (_) {
                 token = false;
                 _controller.pause();
               })),
@@ -76,7 +76,7 @@ class _ScrubState extends State<Scrub> {
                             onChanged: (value) => setState(() => {
                                   this.value = value,
                                   print(this.value),
-                                  _controller.setPlaybackSpeed(this.value/2),
+                                  _controller.setPlaybackSpeed(this.value / 2),
                                 }),
                           ),
                         ),
