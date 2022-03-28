@@ -34,14 +34,29 @@ const MaterialColor kPrimaryColor = const MaterialColor(
     900: const Color(0xFF0E7AC7),
   },
 );
+const MaterialColor gray = const MaterialColor(
+  0xFFFFD18C,
+  const <int, Color>{
+    50: const Color(0xFFFFD18C),
+    100: const Color(0xFFFFD18C),
+    200: const Color(0xFFFFD18C),
+    300: const Color(0xFFFFD18C),
+    400: const Color(0xFFFFD18C),
+    500: const Color(0xFFFFD18C),
+    600: const Color(0xFFFFD18C),
+    700: const Color(0xFFFFD18C),
+    800: const Color(0xFFFFD18C),
+    900: const Color(0xFFFFD18C),
+  },
+);
 
 class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'unMAZED',
+        title: 'unmazed',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          primarySwatch: Colors.grey,
+          primarySwatch: gray,
         ),
         home: MyHome());
   }
@@ -57,7 +72,7 @@ class MyHome extends StatelessWidget {
           title: Image.asset(
         'assets/images/logo.png',
         fit: BoxFit.contain,
-        height: 50,
+        height: 30,
       )),
       body: ListView(
         children: [
