@@ -175,7 +175,7 @@ class _ScrubState extends State<Scrub> {
           ),
           SpeedDialChild(
             child: Icon(Icons.home),
-            backgroundColor: gray,
+            backgroundColor: pastelOrange,
             label: 'Home',
             onTap: () {
               Navigator.push(

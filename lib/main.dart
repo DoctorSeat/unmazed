@@ -34,7 +34,7 @@ const MaterialColor kPrimaryColor = const MaterialColor(
     900: const Color(0xFF0E7AC7),
   },
 );
-const MaterialColor gray = const MaterialColor(
+const MaterialColor pastelOrange = const MaterialColor(
   0xFFFFD18C,
   const <int, Color>{
     50: const Color(0xFFFFD18C),
@@ -56,7 +56,7 @@ class MyApp extends StatelessWidget {
         title: 'unmazed',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          primarySwatch: gray,
+          primarySwatch: pastelOrange,
         ),
         home: MyHome());
   }

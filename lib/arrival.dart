@@ -52,7 +52,7 @@ class _ArrivalState extends State<Arrival> {
               child: Align(
                   alignment: Alignment.bottomRight,
                   child: FloatingActionButton(
-                      backgroundColor: gray,
+                      backgroundColor: pastelOrange,
                       child: const Icon(Icons.house),
                       onPressed: () {
                         Navigator.push(
