@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:unmazed/scrub.dart';
-import 'carousel.dart';
 
 Map<String, int> startbiblio = <String, int>{
   'I': 0,
@@ -141,7 +140,7 @@ bool makeRoute(var startText, var endText) {
   searchend(endText);
   // route(start, ende);
   index = start + ende;
-  chooseimages();
+  chooseImages();
   print(imgList);
   return imgList.length > 0;
 }
@@ -179,7 +178,7 @@ void searchend(var searchparam) {
 //   }
 // }
 
-void chooseimages() {
+void chooseImages() {
   imgList.clear();
   for (var i = 0; i < mapList.length; i++) {
     var j = mapList[i];

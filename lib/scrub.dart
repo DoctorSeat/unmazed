@@ -15,7 +15,7 @@ class Scrub extends StatefulWidget {
 }
 
 class _ScrubState extends State<Scrub> {
-  double value = 1;
+  double value = 3;
   VideoPlayerController _controller;
   @override
   void initState() {
@@ -31,9 +31,7 @@ class _ScrubState extends State<Scrub> {
   @override
   Widget build(BuildContext context) {
     final double min = 0.5;
-    final double max = 5;
-    double value = 1;
-    bool token = false;
+    final double max = 10;
     return new Scaffold(
         body: Stack(
           children: [
@@ -42,7 +40,6 @@ class _ScrubState extends State<Scrub> {
                 width: double.infinity,
                 height: double.infinity,
                 child: GestureDetector(onTapDown: (_) async {
-                  token = true;
                   if (this.value > 0) {
                     if (_controller.value.position ==
                         _controller.value.duration) {
@@ -56,7 +53,6 @@ class _ScrubState extends State<Scrub> {
                     }
                   } else {}
                 }, onTapUp: (_) {
-                  token = false;
                   _controller.pause();
                 })),
             SliderTheme(
@@ -109,7 +105,11 @@ class _ScrubState extends State<Scrub> {
                   child: FloatingActionButton(
                     backgroundColor: Colors.purple,
                     child: const Icon(Icons.replay),
-                    onPressed: rewind1Seconds,
+                    onPressed: (){
+                      rewind1Seconds();
+                      _controller.play();
+                      _controller.pause();
+                  }
                   ),
                 ),
                 // Align(
@@ -121,15 +121,24 @@ class _ScrubState extends State<Scrub> {
   }
 
   Widget buildSideLabel(double value) => RotatedBox(
-        quarterTurns: 1,
-        child: Container(
-            width: 50,
-            child: Text(value.toString() + "x",
-                style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white))),
-      );
+      quarterTurns: 1,
+      child: Container(
+          width: 70,
+          child: Padding(
+            padding: EdgeInsets.all(10),
+            child: Center(
+                child: Text(value.toString() + "x",
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        shadows: [
+                          Shadow(
+                              blurRadius: 5,
+                              color: Colors.black,
+                              offset: const Offset(1, 1))
+                        ],
+                        color: Colors.white))),
+          )));
   Future goToPosition(
     Duration Function(Duration currentPosition) builder,
   ) async {
@@ -138,8 +147,10 @@ class _ScrubState extends State<Scrub> {
     await _controller.seekTo(newPosition);
   }
 
-  Future<void> rewind1Seconds() async => goToPosition(
+  Future<void> rewind1Seconds() async =>
+      goToPosition(
       (currentPosition) => currentPosition - Duration(milliseconds: 1000));
+
 
   Widget buildSpeedDial() => SpeedDial(
         animatedIcon: AnimatedIcons.menu_close,

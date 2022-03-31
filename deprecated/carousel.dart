@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
-import 'supPage.dart';
-import 'main.dart';
-import 'arrival.dart';
+import '../lib/supPage.dart';
+import '../lib/main.dart';
+import '../lib/arrival.dart';
+
+
 
 class Carousel extends StatefulWidget {
   const Carousel({
@@ -14,7 +16,6 @@ class Carousel extends StatefulWidget {
 
 class _CarouselState extends State<Carousel> {
   //bool _hasPermissions = false;
-  int _tafelIndex = 0;
   int _currentIndex = 0;
   @override
   void initState() {
@@ -209,15 +210,11 @@ class _CarouselState extends State<Carousel> {
                 () {
                   if (_currentIndex + 1 == imgList.length) {
                     _currentIndex = 0;
-                    _tafelIndex = 0;
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => Arrival()),
                     );
                   } else {
-                    if ((_currentIndex + 1) % 7 == 0) {
-                      _tafelIndex += 1;
-                    }
                     _currentIndex += 1;
                   }
                 },
@@ -228,11 +225,9 @@ class _CarouselState extends State<Carousel> {
                 if (_currentIndex - 1 >= 0) {
                   _currentIndex -= 1;
                   if ((_currentIndex - 1) % 7 == 0) {
-                    _tafelIndex -= 1;
                   }
                 } else {
                   _currentIndex = 0;
-                  _tafelIndex = 0;
                 }
               });
             },
